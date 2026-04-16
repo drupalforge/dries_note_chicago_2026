@@ -10,7 +10,7 @@ cd $APP_ROOT
 git clone --depth 1 --quiet https://github.com/fosterinteractive/c2026.git
 rm -rf c2026/LICENSE.txt
 cp -rn c2026/* ./
-cp -n c2026/.ddev/.env.template .ddev/
+cp -n c2026/.env.template .ddev/
 rm -rf c2026
 
 # Allow insecure packages.
