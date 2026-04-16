@@ -12,6 +12,8 @@ rm -rf c2026/LICENSE.txt
 cp -rn c2026/* ./
 cp -n c2026/.env.template .ddev/
 rm -rf c2026
+# Remove drupal_cms_installer to avoid error in build
+rm -rf web/profiles/drupal_cms_installer
 
 # Allow insecure packages.
 composer config audit.ignore SA-CONTRIB-2026-006 SA-CONTRIB-2026-017
