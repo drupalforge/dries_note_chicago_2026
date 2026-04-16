@@ -7,11 +7,11 @@ set -eu -o pipefail
 cd $APP_ROOT
 
 # Create required composer.json and composer.lock files.
-git clone --depth 1 --quiet https://github.com/FreelyGive/v2025demo.git
-rm -rf v2025demo/LICENSE.txt
-cp -rn v2025demo/* ./
-cp -n v2025demo/.ddev/.env.template .ddev/
-rm -rf v2025demo
+git clone --depth 1 --quiet https://github.com/fosterinteractive/c2026.git
+rm -rf c2026/LICENSE.txt
+cp -rn c2026/* ./
+cp -n c2026/.ddev/.env.template .ddev/
+rm -rf c2026
 
 # Allow insecure packages.
 composer config audit.ignore SA-CONTRIB-2026-006 SA-CONTRIB-2026-017
@@ -27,14 +27,3 @@ composer config -jm extra.drupal-scaffold.file-mapping '{
 }'
 composer config scripts.post-drupal-scaffold-cmd \
     'cd web/sites/default && test -z "$(grep '\''include \$devpanel_settings;'\'' settings.php)" && patch -Np1 -r /dev/null < $APP_ROOT/.devpanel/drupal-settings.patch || :'
-
-# Add AI demos.
-time composer -n require --no-install \
-    drupal/ai:1.2.x-dev@dev \
-    drupal/ai_agents:1.2.x-dev@dev \
-    drupal/ai_provider_openai:1.2.x-dev@dev \
-    drupal/ai_simple_pdf_to_text:^1.0@alpha \
-    drupal/ai_vdb_provider_milvus:1.1.x-dev@dev \
-    drupal/page_cache_exclusion:^1.0 \
-    drupal/pexels_ai:^1.0@alpha \
-    jfcherng/php-diff:^6.0
