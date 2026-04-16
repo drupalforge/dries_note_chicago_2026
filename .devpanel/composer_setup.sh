@@ -9,11 +9,9 @@ cd $APP_ROOT
 # Create required composer.json and composer.lock files.
 git clone --depth 1 --quiet https://github.com/fosterinteractive/c2026.git
 rm -rf c2026/LICENSE.txt
-cp -rn c2026/* ./
+rsync -a --exclude='web/profiles/drupal_cms_installer' c2026/ ./
 cp -n c2026/.env.template .ddev/
 rm -rf c2026
-# Remove drupal_cms_installer to avoid error in build
-rm -rf web/profiles/drupal_cms_installer
 
 # Allow insecure packages.
 composer config audit.ignore SA-CONTRIB-2026-006 SA-CONTRIB-2026-017
