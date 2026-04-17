@@ -115,21 +115,11 @@ if [ -z "$(drush status --field=db-status)" ]; then
     time drush -n si drupal_cms_installer installer_site_template_form.add_ons=byte
   fi
   time drush cr
-  echo 'Apply Canvas AI Setup recipe.'
-  time drush -q recipe ../custom_recipes/canvas_ai_setup
+  echo 'Apply findrop recipe.'
+  time drush -q recipe ../custom_recipes/findrop
   time drush cr
-  echo 'Apply Media Images recipe.'
-  if [[ "$(uname -m)" == "arm64" ]] || [[ "$(uname -m)" == "aarch64" ]]; then
-    # For some reason, writable directories are sometimes detected as not
-    # writable, so loop until it works.
-    until time drush -q recipe ../custom_recipes/media_images; do
-      :
-    done
-  else
-    time drush -q recipe ../custom_recipes/media_images
-  fi
-  echo 'Apply Mercury Demo Page recipe.'
-  time drush -q recipe ../custom_recipes/new_canvas_page
+  echo 'Apply AI context setup recipe.'
+  time drush -q recipe ../custom_recipes/ai_context_setup
   time drush cr
   time drush sapi-i
 
