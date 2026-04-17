@@ -15,5 +15,4 @@ jobs:
       dockerhub_username: ${{ vars.DOCKERHUB_USERNAME }}
     secrets:
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
-      openai_api_key: ${{ secrets.OPENAI_API_KEY }}
-      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+      openai_key: ${{ secrets.OPENAI_KEY }}
