@@ -14,12 +14,12 @@ export COMPOSER_NO_AUDIT=1
 
 # Function to check rate limit and add delay if needed
 check_rate_limit_and_delay() {
-  if [ -n "${OPENAI_KEY:-}" ]; then
+  if [ -n "${OPENAI_API_KEY:-}" ]; then
     echo "Checking OpenAI API rate limit status..."
     
     # Make a minimal API call to check rate limit headers
     RESPONSE=$(curl -s -i -X POST https://api.openai.com/v1/chat/completions \
-      -H "Authorization: Bearer ${OPENAI_KEY}" \
+      -H "Authorization: Bearer ${OPENAI_API_KEY}" \
       -H "Content-Type: application/json" \
       -d '{"model":"gpt-4.1","messages":[{"role":"user","content":"test"}],"max_tokens":1}' 2>&1 || echo "")
     
