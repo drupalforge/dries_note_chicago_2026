@@ -1,8 +1,8 @@
-# Driesnote Vienna 2025 - Drupal Forge Wrapper
+# Driesnote Chicago 2026 - Drupal Forge Wrapper
 
-This repository provides a Drupal Forge-compatible wrapper for running [FreelyGive/v2025demo](https://github.com/FreelyGive/v2025demo) with Milvus vector database and Attu management UI integrated into the environment. DDEV is used locally to replicate the Drupal Forge hosting environment.
+This repository provides a Drupal Forge-compatible wrapper for running [fosterinteractive/c2026](https://github.com/fosterinteractive/c2026) with Milvus vector database and Attu management UI integrated into the environment. DDEV is used locally to replicate the Drupal Forge hosting environment.
 
-**For the original demo documentation, setup instructions, and requirements, see the [FreelyGive/v2025demo repository](https://github.com/FreelyGive/v2025demo).**
+**For the original demo documentation, setup instructions, and requirements, see the [fosterinteractive/c2026 repository](https://github.com/fosterinteractive/c2026).**
 
 ## What this wrapper adds
 
@@ -15,11 +15,15 @@ This wrapper extends the original demo with Drupal Forge-specific configurations
 ## Running the demo (local development)
 DDEV replicates the Drupal Forge environment locally:
 ```bash
-cp .ddev/.env.template .ddev/.env  # Set your OpenAI API key
+cp .ddev/.env.template .ddev/.env  # Set your OpenAI and Anthropic API keys
 ddev start                          # Installs and configures everything
 ```
 
-**Note:** Running `ddev start` automatically executes [`.devpanel/composer_setup.sh`](.devpanel/composer_setup.sh), which installs the FreelyGive/v2025demo repository and configures everything. Unlike the original demo, there is no separate `demo-setup` command.
+**Note:** Running `ddev start` automatically executes [`.devpanel/composer_setup.sh`](.devpanel/composer_setup.sh), which installs the fosterinteractive/c2026 repository and configures everything. Unlike the original demo, there is no separate `demo-setup` command.
+
+## API Keys Required
+
+This demo requires both an OpenAI and Anthropic API key. After launching on Drupal Forge, add both keys as secrets in the repository settings.
 
 ## Attu (Milvus management UI)
 
