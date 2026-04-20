@@ -123,8 +123,23 @@ if [ -z "$(drush status --field=db-status)" ]; then
   echo 'Installing Node.js 20 for Canvas build.'
   curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
   sudo apt-get install -y nodejs
+  
+  echo 'Current node location and version:'
+  which node
+  node --version
+  echo 'Nodesource-installed node:'
+  ls -la /usr/bin/node /usr/local/bin/node 2>&1 || true
+  /usr/bin/node --version
+  
+  # Force new node to take precedence
+  export PATH=/usr/bin:$PATH
+  hash -r
+  
+  echo 'Node after PATH update:'
+  which node
   node --version
   npm --version
+  
   echo 'Building Canvas UI assets.'
   (cd web/modules/contrib/canvas && npm install)
   (cd web/modules/contrib/canvas/ui && npm run build)
