@@ -120,7 +120,6 @@ if [ -z "$(drush status --field=db-status)" ]; then
   echo 'Apply AI context setup recipe.'
   time drush -q recipe ../custom_recipes/ai_context_setup
   time drush cr
-
   echo 'Installing Node.js 20 for Canvas build.'
   curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
   sudo apt-get install -y nodejs
@@ -129,14 +128,9 @@ if [ -z "$(drush status --field=db-status)" ]; then
   echo 'Building Canvas UI assets.'
   (cd web/modules/contrib/canvas && npm install)
   (cd web/modules/contrib/canvas/ui && npm run build)
-
-  echo 'Building Canvas UI assets.'
-  (cd web/modules/contrib/canvas && npm install)
-  (cd web/modules/contrib/canvas/ui && npm run build)
   time drush cr
   sleep 3
   time drush sapi-i
-
   echo
   echo 'Tell Automatic Updates about patches.'
   drush -n cset --input-format=yaml package_manager.settings additional_trusted_composer_plugins '["cweagans/composer-patches"]'
