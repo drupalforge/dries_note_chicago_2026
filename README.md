@@ -15,11 +15,9 @@ This wrapper extends the original demo with Drupal Forge-specific configurations
 ## Running the demo (local development)
 DDEV replicates the Drupal Forge environment locally:
 ```bash
-cp .ddev/.env.template .ddev/.env  # Set your OpenAI and Anthropic API keys
-ddev start                          # Installs and configures everything
+cp .env.template .ddev/.env # Set your OpenAI and Anthropic API keys
+ddev demo-setup             # Installs and configures everything
 ```
-
-**Note:** Running `ddev start` automatically executes [`.devpanel/composer_setup.sh`](.devpanel/composer_setup.sh), which installs the fosterinteractive/c2026 repository and configures everything. Unlike the original demo, there is no separate `demo-setup` command.
 
 ## API Keys Required
 
