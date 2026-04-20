@@ -108,19 +108,23 @@ if [ -z "$(drush status --field=db-status)" ]; then
   if [[ "$(uname -m)" == "arm64" ]] || [[ "$(uname -m)" == "aarch64" ]]; then
     # For some reason, writable directories are sometimes detected as not
     # writable, so loop until it works.
-    until time drush -n si drupal_cms_installer installer_site_template_form.add_ons=byte; do
+    until time drush -n si ../custom_recipes/findrop; do
       :
     done
   else
-    time drush -n si drupal_cms_installer installer_site_template_form.add_ons=byte
+    time drush -n si ../custom_recipes/findrop
   fi
   time drush cr
-  echo 'Apply findrop recipe.'
-  time drush -q recipe ../custom_recipes/findrop
-  time drush cr
+  echo 'Enable AI Context module.'
+  time drush en ai_context -y
   echo 'Apply AI context setup recipe.'
   time drush -q recipe ../custom_recipes/ai_context_setup
   time drush cr
+  echo 'Building Canvas UI assets.'
+  (cd web/modules/contrib/canvas && npm install)
+  (cd web/modules/contrib/canvas/ui && npm run build)
+  time drush cr
+  sleep 3
   time drush sapi-i
 
   echo
