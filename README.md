@@ -16,7 +16,7 @@ This wrapper extends the original demo with Drupal Forge-specific configurations
 DDEV replicates the Drupal Forge environment locally:
 ```bash
 cp .env.template .ddev/.env # Set your OpenAI and Anthropic API keys
-ddev demo-setup             # Installs and configures everything
+ddev demo-setup              # Installs and configures everything
 ```
 
 ## API Keys Required
