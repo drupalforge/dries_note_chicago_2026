@@ -21,7 +21,7 @@ ddev demo-setup              # Installs and configures everything
 
 ## API Keys Required
 
-This demo requires both an OpenAI and Anthropic API key. After launching on Drupal Forge, add both keys as secrets in the repository settings.
+This demo requires both an OpenAI and Anthropic API key. After launching on Drupal Forge, add both keys as secrets in the repository settings. To make `OPENAI_KEY` available during image initialization, set the `INIT_ENV` repository secret to a JSON object such as `{"OPENAI_KEY":"your-key"}`. Additional initialization environment variables can be added to the same object.
 
 ## Attu (Milvus management UI)
 

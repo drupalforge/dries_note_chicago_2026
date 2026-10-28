@@ -21,3 +21,4 @@ jobs:
     secrets:
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
       dp_ai_virtual_key: ${{ secrets.DP_AI_VIRTUAL_KEY }}
+      init_env: ${{ secrets.INIT_ENV }}
