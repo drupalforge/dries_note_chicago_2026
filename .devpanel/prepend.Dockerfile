@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=devpanel/php:8.4-base-rc
+ARG BASE_IMAGE=devpanel/php:8.4-base
 
 FROM zilliz/attu:v2.3.10 AS attu
 FROM quay.io/coreos/etcd:v3.5.5 AS etcd

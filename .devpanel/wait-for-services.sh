@@ -61,7 +61,7 @@ check_etcd() {
 check_rustfs() {
   echo "Checking RustFS health..." >&2
   for i in {1..60}; do
-    if curl -s -f http://127.0.0.1:9000/minio/health/live >/dev/null 2>&1; then
+    if curl -s -f http://127.0.0.1:9000/health/live >/dev/null 2>&1; then
       echo "✓ RustFS is healthy (attempt $i)" >&2
       return 0
     fi
