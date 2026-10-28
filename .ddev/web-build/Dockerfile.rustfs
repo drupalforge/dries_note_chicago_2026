@@ -1,0 +1,5 @@
+# Copy RustFS binary
+COPY --from=rustfs /usr/bin/rustfs /usr/bin/rustfs
+
+# Copy Supervisor config for RustFS service
+COPY supervisor/minio.conf /etc/supervisor/conf.d/minio.conf
