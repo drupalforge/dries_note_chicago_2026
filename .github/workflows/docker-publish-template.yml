@@ -20,5 +20,6 @@ jobs:
       base_image: devpanel/php:8.4-base
     secrets:
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
-      dp_ai_virtual_key: ${{ secrets.DP_AI_VIRTUAL_KEY }}
-      init_env: ${{ secrets.INIT_ENV }}
+      init_env: >-
+        ${{ format('{{"OPENAI_KEY":{0},"ANTHROPIC_API_KEY":{1}}}',
+        toJSON(secrets.OPENAI_KEY), toJSON(secrets.ANTHROPIC_API_KEY)) }}
