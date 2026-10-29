@@ -33,10 +33,7 @@ services:
         condition: service_completed_successfully
 
   init-source-code:
-    # init-source-code: imports code and DB from the image into the host bind
-    # once. Its state volume prevents later Compose starts from repeating the
-    # sync. Existing host files and Git metadata are preserved during the
-    # import.
+    # Imports code and DB from the image into the host bind.
     image: drupalforge/dries_note_chicago_2026:main
     environment:
       APP_ROOT: /var/www/html
@@ -54,16 +51,9 @@ services:
       - -c
       - |
         set -e
-        if [ ! -f /var/lib/devcontainer-init/.complete ]; then
-          "$$APP_ROOT"/.devpanel/init-container.sh
-          sudo touch /var/lib/devcontainer-init/.complete
-        fi
+        "$$APP_ROOT"/.devpanel/init-container.sh
     depends_on:
       db:
         condition: service_healthy
     volumes:
       - "..:/var/www/build"
-      - "init-source-code-state:/var/lib/devcontainer-init"
-
-volumes:
-  init-source-code-state:
