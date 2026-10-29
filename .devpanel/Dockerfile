@@ -25,6 +25,7 @@ COPY --from=etcd /usr/local/bin/etcd /usr/local/bin/etcd
 COPY --from=etcd /usr/local/bin/etcdctl /usr/local/bin/etcdctl
 COPY --from=milvus /milvus /milvus
 COPY --from=rustfs /usr/bin/rustfs /usr/bin/rustfs
+RUN echo "/milvus/lib" > /etc/ld.so.conf.d/milvus.conf && ldconfig
 
 COPY .ddev/apache/attu-proxy.conf /etc/apache2/conf-available/attu-proxy.conf
 COPY .ddev/web-build/supervisor/*.conf /etc/supervisor/conf.d/
