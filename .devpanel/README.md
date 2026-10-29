@@ -18,6 +18,8 @@ Files in the `.devpanel` directory control DevPanel deployment for this app.
     script. Make sure this works with your Composer project.
   - [`warm`](warm): Loads any path to build caches. If no path is provided,
     defaults to /.
+  - [`wait-for-services.sh`](wait-for-services.sh): Waits for etcd, RustFS,
+    Milvus, and Attu to become healthy before Drupal is installed or indexed.
 
 
 ## Git integration
