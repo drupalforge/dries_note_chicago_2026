@@ -101,6 +101,11 @@ if [ ! -d config/sync ]; then
   time mkdir -p config/sync
 fi
 
+#== Wait for vector database services.
+echo
+echo 'Wait for Milvus services.'
+time .devpanel/wait-for-services.sh
+
 #== Install Drupal.
 echo
 if [ -z "$(drush status --field=db-status)" ]; then
