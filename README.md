@@ -21,7 +21,7 @@ ddev demo-setup              # Installs and configures everything
 
 ## API Keys Required
 
-An OpenAI API key is required for embeddings and AI search. Add the `OPENAI_KEY` repository secret in the repository settings; the publish workflow passes it to initialization through the upstream `init_env` input.
+This demo requires both an OpenAI and Anthropic API key. After launching on Drupal Forge, add both keys as secrets in the repository settings.
 
 ## Attu (Milvus management UI)
 
