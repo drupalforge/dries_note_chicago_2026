@@ -36,7 +36,7 @@ if [[ -n "${DB_SYNC_VOL:-}" ]]; then
       # user-writable so it can continue copying nested files on fresh volumes.
       sudo rsync -a --chmod=Du+w --ignore-existing --exclude .git --exclude .devpanel/dumps ./ ../build
     else
-      sudo rsync -a --delete --ignore-existing --exclude .git --exclude .devpanel/dumps ./ ../build
+      sudo rsync -a --delete --ignore-existing --exclude .devpanel/dumps ./ ../build
     fi
   fi
 fi
