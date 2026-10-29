@@ -3,7 +3,6 @@ USER root
 ARG DEBIAN_FRONTEND=noninteractive
 ARG DP_HOSTNAME=localhost
 ARG CODES_ENABLE=no
-ARG WEB_ROOT=/var/www/html/web
 
 RUN apt-get update -qq && \
     apt-get install -y -qq jq nano npm ripgrep supervisor python3-pip curl \
