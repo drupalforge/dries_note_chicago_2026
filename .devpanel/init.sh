@@ -101,12 +101,10 @@ if [ ! -d config/sync ]; then
   time mkdir -p config/sync
 fi
 
-#== Wait for vector database services. DDEV does this in a post-start hook.
-if [ "${IS_DDEV_PROJECT:-false}" != "true" ]; then
-  echo
-  echo 'Wait for Milvus services.'
-  time .devpanel/wait-for-services.sh
-fi
+#== Wait for vector database services.
+echo
+echo 'Wait for Milvus services.'
+time .devpanel/wait-for-services.sh
 
 #== Install Drupal.
 echo
