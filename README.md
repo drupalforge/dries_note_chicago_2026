@@ -8,7 +8,7 @@ This repository provides a Drupal Forge-compatible wrapper for running [fosterin
 
 This wrapper extends the original demo with Drupal Forge-specific configurations:
 
-1. **Embedded Milvus Stack**: Milvus vector database, etcd, MinIO, and Attu run inside the web container via Supervisor (matching Drupal Forge architecture)
+1. **Embedded Milvus Stack**: Milvus vector database, etcd, RustFS, and Attu run inside the web container via Supervisor (matching Drupal Forge architecture)
 2. **Attu Web UI Access**: Access the Milvus management interface at `/attu` (Apache proxy with URL rewriting)
 3. **Drupal Forge Compatibility**: Configuration designed to work on Drupal Forge hosting platform
 
