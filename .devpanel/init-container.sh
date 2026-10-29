@@ -32,10 +32,17 @@ if [ -z "$(drush status --field=db-status)" ]; then
 fi
 
 if [[ -n "${DB_SYNC_VOL:-}" ]]; then
-  echo 'Sync volume...'
-  sudo rsync -a --chmod=Du+w --ignore-existing \
-    --exclude .git --exclude .devpanel/dumps \
-    "$APP_ROOT/" /var/www/build
+  if [[ ! -f "../build/.devpanel/init-container.sh" ]]; then
+    sudo rm -rf ../build/lost+found
+    echo 'Sync volume...'
+    if [[ -n "$DRUPALFORGE_DEVCONTAINER" ]]; then
+      # Preserve source permissions, but ensure rsync-created directories remain
+      # user-writable so it can continue copying nested files on fresh volumes.
+      sudo rsync -a --chmod=Du+w --ignore-existing --exclude .git --exclude .devpanel/dumps ./ ../build
+    else
+      sudo rsync -a --delete --ignore-existing --exclude .git --exclude .devpanel/dumps ./ ../build
+    fi
+  fi
 fi
 
 drush -n updb
