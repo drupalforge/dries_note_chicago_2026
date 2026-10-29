@@ -31,14 +31,11 @@ if [ -z "$(drush status --field=db-status)" ]; then
   fi
 fi
 
-if [[ -n "$DB_SYNC_VOL" ]]; then
-  if [[ ! -f "/var/www/build/.devpanel/init-container.sh" ]]; then
-    echo  'Sync volume...'
-    sudo chown -R 1000:1000 /var/www/build 
-    rsync -av --delete --delete-excluded \
-      --filter='H /.git/' --filter='P /.git/' \
-      "$APP_ROOT/" /var/www/build
-  fi
+if [[ -n "${DB_SYNC_VOL:-}" ]]; then
+  echo 'Sync volume...'
+  sudo rsync -a --chmod=Du+w --ignore-existing \
+    --exclude .git --exclude .devpanel/dumps \
+    "$APP_ROOT/" /var/www/build
 fi
 
 drush -n updb
