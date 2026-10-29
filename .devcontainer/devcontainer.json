@@ -1,5 +1,5 @@
 {
-    "name": "2025 Demo (PHP 8.4)",
+    "name": "2026 Chicago Demo (PHP 8.4)",
     "dockerComposeFile": "docker-compose.yml",
     "service": "app",
     "workspaceFolder": "/var/www/html",
@@ -7,6 +7,5 @@
 	"forwardPorts": [
 		80
 	],
-    "updateContentCommand": ".devpanel/init.sh",
     "remoteUser": "www"
 }
