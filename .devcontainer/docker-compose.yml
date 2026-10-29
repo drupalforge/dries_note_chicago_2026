@@ -51,8 +51,14 @@ services:
       - -c
       - |
         set -e
-        rm -f /var/www/build/.devpanel/init-container.sh
+        git config --global --add safe.directory /var/www/build
+        cd /var/www/build
+        git stash -um "pre-image-sync-$$(date -u +%Y%m%dT%H%M%SZ)"
+        rm -f .devpanel/init-container.sh
         "$$APP_ROOT"/.devpanel/init-container.sh
+        git reset --hard --quiet
+        git clean -df --quiet
+        git stash list -1 | grep -i "pre-image-sync-" && git stash pop || :
     depends_on:
       db:
         condition: service_healthy
