@@ -35,7 +35,9 @@ if [[ -n "$DB_SYNC_VOL" ]]; then
   if [[ ! -f "/var/www/build/.devpanel/init-container.sh" ]]; then
     echo  'Sync volume...'
     sudo chown -R 1000:1000 /var/www/build 
-    rsync -av --delete --delete-excluded $APP_ROOT/ /var/www/build
+    rsync -av --delete --delete-excluded \
+      --filter='H /.git/' --filter='P /.git/' \
+      "$APP_ROOT/" /var/www/build
   fi
 fi
 
