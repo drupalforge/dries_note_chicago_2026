@@ -21,7 +21,7 @@ ddev demo-setup              # Installs and configures everything
 
 ## API Keys Required
 
-This demo requires both an OpenAI and Anthropic API key. Add the `OPENAI_KEY` and `ANTHROPIC_API_KEY` repository secrets in the repository settings; the publish workflow passes them to initialization through the upstream `init_env` input.
+An OpenAI API key is required for embeddings and AI search. Add the `OPENAI_KEY` repository secret in the repository settings; the publish workflow passes it to initialization through the upstream `init_env` input.
 
 ## Attu (Milvus management UI)
 

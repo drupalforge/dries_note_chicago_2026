@@ -21,5 +21,5 @@ jobs:
     secrets:
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
       init_env: >-
-        ${{ format('{{"OPENAI_KEY":{0},"ANTHROPIC_API_KEY":{1}}}',
-        toJSON(secrets.OPENAI_KEY), toJSON(secrets.ANTHROPIC_API_KEY)) }}
+        ${{ format('{{"OPENAI_KEY":{0}}}',
+        toJSON(secrets.OPENAI_KEY)) }}
