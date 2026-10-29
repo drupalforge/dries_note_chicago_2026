@@ -51,6 +51,7 @@ services:
       - -c
       - |
         set -e
+        rm -f /var/www/build/.devpanel/init-container.sh
         "$$APP_ROOT"/.devpanel/init-container.sh
     depends_on:
       db:
