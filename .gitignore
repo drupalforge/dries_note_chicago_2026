@@ -4,12 +4,14 @@
 /.editorconfig
 /.gitattributes
 /.vscode/
+/ai_context_data/
 /byte/
 /CODEOWNERS
 /composer.json
 /composer.lock
 /config/
 /cpanel_template/
+/creating_patch_for_canvas/
 /custom_recipes/
 /dev.composer.json
 /drupal-ai-demo-brief_v3.md

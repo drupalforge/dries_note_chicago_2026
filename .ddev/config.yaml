@@ -1,6 +1,7 @@
 type: drupal11
 docroot: web
 php_version: "8.4"
+nodejs_version: "20"
 webserver_type: apache-fpm
 xdebug_enabled: false
 additional_hostnames: []

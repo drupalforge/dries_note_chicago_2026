@@ -19,8 +19,6 @@ RUN apt-get update -qq && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY --from=attu /app /app
-COPY --from=attu /usr/local/bin/node /usr/local/bin/node
-COPY --from=attu /usr/local/lib/node_modules /usr/local/lib/node_modules
 COPY --from=etcd /usr/local/bin/etcd /usr/local/bin/etcd
 COPY --from=etcd /usr/local/bin/etcdctl /usr/local/bin/etcdctl
 COPY --from=milvus /milvus /milvus

@@ -36,6 +36,9 @@ Files in the `.devpanel` directory control DevPanel deployment for this app.
 
 ## Creating a Docker image
 
+- [`prepend.Dockerfile`](prepend.Dockerfile) and [`Dockerfile`](Dockerfile):
+  Extend the standard Docker Publish action with the Attu, etcd, Milvus, and
+  RustFS services, PHP extensions, Apache proxy, and Supervisor configuration.
 - [`create_quickstart.sh`](create_quickstart.sh): Archives the database and
   files for the _Drupal Forge Docker Publish Workflow_ which can be added in
   [GitHub Actions](../../actions).
